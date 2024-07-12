@@ -10,7 +10,7 @@ class Datas{
     static async getAll({offset, limited}){
         const connection = await createConnection()
         
-        let query = "SELECT * from data"
+        let query = `SELECT * from data`
 
         if (offset >= 0 && limited) {
             query += ` LIMIT ${offset}, ${limit}`
@@ -19,6 +19,12 @@ class Datas{
         connection.end()
         return datas
 
+    }
+    static async dataById(id_data){
+        const connection = await createConnection()
+        const [datas] = await connection.query(`SELECT * from data WHERE id = ${id_data}`)
+        connection.end()
+        return datas
     }
 }
 

@@ -22,6 +22,25 @@ const index = async (req, res) => {
         });
     }
 }
+const getById = async (req, res) => {
+    try{
+        const id_data = req.data.id_data
+        const data = await Datas.dataById(id_data)
+
+        return res.status(200).json({
+            success: true,
+            documents,
+            message: "se obtuvieron los datos correctamente"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "ocurrió un error al obtener los datos",
+            error: error.message
+        });
+    }
+}
 export{
-    index
+    index,
+    getById
 }
