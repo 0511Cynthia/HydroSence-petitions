@@ -1,4 +1,4 @@
-import {createConnection} from '../configs/db.config.js';
+import {createConnection} from '../config/db.config.js';
 
 class Datas{
     constructor({id_data, date, data, engine_ref_dat}){
@@ -7,27 +7,27 @@ class Datas{
         this.data = data 
         this.engine_ref_dat = engine_ref_dat
     }
-    static async getAll({offset, limited}){
+    static async getAll({offset, limit}){
         const connection = await createConnection()
         
-        let query = `SELECT * from data`
+        let query = `SELECT * from datas`
 
-        if (offset >= 0 && limited) {
-            query += ` LIMIT ${offset}, ${limit}`
+        if (offset >= 0 && limit) {
+            query += ` LIMIT  ?, ?`
         }
-        const [datas] = await connection.query(query)
+        const [datas] = await connection.query(query, [offset, limit])
         connection.end()
         return datas
     }
     static async dataById(id_data){
         const connection = await createConnection()
-        const [datas] = await connection.query(`SELECT * FROM data WHERE id_data = ?`, [id_data])
+        const [datas] = await connection.query(`SELECT * FROM datas WHERE id_data = ?`, [id_data])
         connection.end()
         return datas
     }
     static async dataByDate(date){
         const connection = await createConnection()
-        const [datas] = await connection.query(`SELECT * FROM data WHERE date = ?`, [date])
+        const [datas] = await connection.query(`SELECT * FROM datas WHERE date = ?`, [date])
         connection.end()
         return datas
     }

@@ -24,12 +24,12 @@ const index = async (req, res) => {
 }
 const getById = async (req, res) => {
     try{
-        const id_data = req.data.id_data
+        const id_data = req.params.id_data
         const data = await Datas.dataById(id_data)
 
         return res.status(200).json({
             success: true,
-            documents,
+            data,
             message: "se obtuvieron los datos correctamente"
         });
     } catch (error) {
@@ -42,12 +42,12 @@ const getById = async (req, res) => {
 }
 const getByDate = async (req, res) => {
     try{
-        const id_data = req.data.date
-        const data = await Datas.dataByDate(id_data)
+        const date = req.params.date
+        const data = await Datas.dataByDate(date)
 
         return res.status(200).json({
             success: true,
-            documents,
+            data,
             message: "se obtuvieron los datos correctamente"
         });
     } catch (error) {

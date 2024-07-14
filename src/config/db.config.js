@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { createConnection } from "mysql2/promise";
+import { createConnection as mysqlCreateConnection } from "mysql2/promise";
 
 const config = {
     host: process.env.HOST,
@@ -8,8 +8,8 @@ const config = {
     database: process.env.DATABASE,
 };
 
-const connectToDatabase = async () =>{
-    return await createConnection(config);
+const createConnection = async () =>{
+    return await mysqlCreateConnection(config);
 } 
 
-export {connectToDatabase as createConnection, config};
+export {createConnection, config};
