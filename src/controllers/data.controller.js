@@ -40,7 +40,26 @@ const getById = async (req, res) => {
         });
     }
 }
+const getByDate = async (req, res) => {
+    try{
+        const id_data = req.data.date
+        const data = await Datas.dataByDate(id_data)
+
+        return res.status(200).json({
+            success: true,
+            documents,
+            message: "se obtuvieron los datos correctamente"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "ocurrió un error al obtener los datos",
+            error: error.message
+        });
+    }
+}
 export{
     index,
-    getById
+    getById,
+    getByDate
 }

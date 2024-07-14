@@ -5,6 +5,7 @@ const datasRouter = Router()
 
 datasRouter.get('/', datasController.index)
 datasRouter.get('/:id', datasController.getById);
+datasRouter.get('/date/:date', datasController.getByDate);
 
 
 export default datasRouter;

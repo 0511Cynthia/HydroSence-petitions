@@ -18,11 +18,16 @@ class Datas{
         const [datas] = await connection.query(query)
         connection.end()
         return datas
-
     }
     static async dataById(id_data){
         const connection = await createConnection()
-        const [datas] = await connection.query(`SELECT * from data WHERE id = ${id_data}`)
+        const [datas] = await connection.query(`SELECT * FROM data WHERE id_data = ?`, [id_data])
+        connection.end()
+        return datas
+    }
+    static async dataByDate(date){
+        const connection = await createConnection()
+        const [datas] = await connection.query(`SELECT * FROM data WHERE date = ?`, [date])
         connection.end()
         return datas
     }

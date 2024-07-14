@@ -8,8 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/data', require('./src/routes/data.routes'));
+app.use('/datas', datasRouter)
 
-app.listen(process.env.PORT||3003,() => {
-    console.log("Escuchando en el puerto 3003");
+app.listen(port||3006,() => {
+    console.log("Escuchando en el puerto 3006");
 });
