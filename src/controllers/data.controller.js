@@ -30,8 +30,8 @@ const index = async (req, res) => {
   
   const getById = async (req, res) => {
     try {
-      const engine_ref_dat = req.params.engine_ref_dat;
-      const data = await Datas.dataById(engine_ref_dat);
+      const engine_ref_data = req.params.engine_ref_data; // Cambiado a 'engine_ref_data'
+      const data = await Datas.dataById(engine_ref_data);
   
       return res.status(200).json({
         success: true,
@@ -46,26 +46,28 @@ const index = async (req, res) => {
       });
     }
   };
-const getByDate = async (req, res) => {
-    try{
-        const date = req.params.date
-        const data = await Datas.dataByDate(date)
-
-        return res.status(200).json({
-            success: true,
-            data,
-            message: "se obtuvieron los datos correctamente"
-        });
+  
+  const getByDate = async (req, res) => {
+    try {
+      const date = req.params.date;
+      const data = await Datas.dataByDate(date);
+  
+      return res.status(200).json({
+        success: true,
+        data,
+        message: "Datos obtenidos correctamente",
+      });
     } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "ocurrió un error al obtener los datos",
-            error: error.message
-        });
+      return res.status(500).json({
+        success: false,
+        message: "Ocurrió un error al obtener los datos",
+        error: error.message,
+      });
     }
-}
-export{
+  };
+  
+  export {
     index,
     getById,
     getByDate
-}
+  }
