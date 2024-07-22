@@ -6,7 +6,11 @@ import router from './src/routes/data.routes.js'
 const port = process.env.PORT;
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: ['GET'],
+}));
+
 app.use(express.json());
 
 app.use('/datas', router)
