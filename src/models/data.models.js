@@ -1,11 +1,11 @@
 import {createConnection} from '../config/db.config.js';
 
 class Datas{
-    constructor({id_data, date, data, engine_ref_dat}){
+    constructor({id_data, date, data, engine_ref_data}){
         this.id_data = id_data
         this.date = date 
         this.data = data 
-        this.engine_ref_dat = engine_ref_dat
+        this.engine_ref_data = engine_ref_data
     }
     static async getAll({offset, limit}){
         const connection = await createConnection()
