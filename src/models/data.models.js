@@ -36,7 +36,14 @@ class Datas {
       connection.end();
       return datas;
     }
-  
+
+    static async lastData() {
+      const connection = await createConnection();
+      const [datas] = await connection.query(`SELECT * FROM datas ORDER BY id_data DESC LIMIT 1`);
+      connection.end();
+      return datas[0]; 
+  }
+
     static async count() {
       const connection = await createConnection();
       const [result] = await connection.query(`SELECT COUNT(*) as count FROM datas`);

@@ -6,6 +6,7 @@ const datasRouter = Router()
 datasRouter.get('/', datasController.index)
 datasRouter.get('/:id', datasController.getById);
 datasRouter.get('/date/:date', datasController.getByDate);
+datasRouter.get('/last', datasController.getLastData);
 
 
 export default datasRouter;
