@@ -66,7 +66,6 @@ const getByDate = async (req, res) => {
   }
 };
 
-// Nueva función para obtener el último dato
 const getLastData = async (req, res) => {
   try {
     const data = await Datas.lastData();

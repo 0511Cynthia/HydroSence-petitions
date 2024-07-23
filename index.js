@@ -1,20 +1,16 @@
-import express from 'express'
-import cors from 'cors'
-import 'dotenv/config.js'
-import router from './src/routes/data.routes.js'
+import express from 'express';
+import cors from 'cors';
+import 'dotenv/config.js';
+import datasRouter from './src/routes/data.routes.js';
 
 const port = process.env.PORT;
 const app = express();
 
-app.use(cors({
-    origin: "*",
-    methods: ['GET'],
-}));
-
+app.use(cors());
 app.use(express.json());
 
-app.use('/datas', router)
+app.use('/datas', datasRouter);
 
-app.listen(port||3006,() => {
-    console.log("Escuchando en el puerto 3006");
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Escuchando en el puerto 3000");
 });
